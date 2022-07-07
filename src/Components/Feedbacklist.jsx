@@ -8,38 +8,34 @@ function Feedbacklist({feedback, handleDelete, handleEditTask, Resubmitfeedback,
         return <div className='noDisplay'>
             <h1 >No feedbacks to display</h1>
         </div>
-    };
-  return (
-    <AnimatePresence>
-    <div className="feedback-list">{feedback.map((item)=>{
+    }else {
+  return <AnimatePresence>
+    <div className="feedback-list">
+        {feedback.map((item)=>{
         if(item.editable===false){
-            return (
-                <motion.div
+            return (<motion.div
                 key={item.id}
                 initial={{opacity:0}}
                 animate={{opacity:1}}
                 exit={{opacity:0}}
                 >
                 <Feedbackitem key={item.id} item={item} handleDelete={handleDelete} handleEditTask={handleEditTask}/>
-                </motion.div>
-            )
-        }else if(item.editable===true){
-            return (
-                <motion.div
+                </motion.div>) 
+            
+        }else{
+            return (<motion.div
                 key={item.id}
                 initial={{opacity:0}}
                 animate={{opacity:1}}
-                exit={{opacity:0}}
-                >
+                exit={{opacity:0}}>
                  <Feedbackitem2 key={item.id} item={item} resubmitRating={resubmitRating} handleEditTask={handleEditTask} Resubmitfeedback={Resubmitfeedback}/>   
-                </motion.div>
-            )
+                </motion.div>)
         }
     })}
     </div>
     </AnimatePresence>
-  )
-};
+  
+};}
 
 Feedbacklist.propTypes = {
     feedback: propTypes.arrayOf(
