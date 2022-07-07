@@ -23,7 +23,6 @@ function App() {
     setFeedback(feedback.map((item)=>{
       if(item.id===id){
         let value = document.getElementById(`${item.id}-num`);
-        
         item.rating = +value.value;
         return item;
       }else return item;
@@ -43,7 +42,7 @@ function App() {
     setFeedback(feedback.map((item)=>{
       if(item.id===id){
         let value = document.getElementById(`${item.id}`);
-        if(item.text = '') item.editable = true;
+        if(item.text === '') {item.editable = true;}
         item.text = value.value;
         return item;
       }else return item;

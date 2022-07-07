@@ -1,6 +1,5 @@
 import propTypes from 'prop-types';
 import Card from './shared/card';
-import Button from './shared/Button';
 
 function Feedbackitem2({item, handleEditTask, Resubmitfeedback, resubmitRating}) {
 
