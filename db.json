@@ -1,0 +1,22 @@
+{
+    "feedback": [
+        {
+            "id": 1,
+            "rating":10,
+            "text":"this is feedback 1",
+            "editable": false
+        },
+        {
+            "id": 2,
+            "rating":8,
+            "text":"this is feedback 2",
+            "editable": false
+        },
+        {
+            "id": 3,
+            "rating":9,
+            "text":"this is feedback 3",
+            "editable": false
+        }
+    ]
+}

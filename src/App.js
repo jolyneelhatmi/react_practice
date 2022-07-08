@@ -1,6 +1,6 @@
 import Header from "./Components/Header";
 import Feedbacklist from "./Components/Feedbacklist";
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import FeedbackData from "./data/feedbackdata";
 import Feedbackstats from "./Components/Feedbackstats";
 import FeedbackForm from "./Components/FeedbackForm";
@@ -9,6 +9,16 @@ import {v4 as uuidv4} from 'uuid';
 
 function App() {
   const [feedback, setFeedback] = useState(FeedbackData);
+  useEffect(()=>{
+    fetchFeedback();
+  }, [])
+
+  const fetchFeedback = async () => {
+    const response = await fetch(`http://localhost:5000/feedback?
+    _sort=id&_order=desc`);
+    const data = await response.json();
+    setFeedback(data);
+  }
   const addFeedback = (newFeedback) => {
     newFeedback.id=uuidv4();
     newFeedback.editable=false;
