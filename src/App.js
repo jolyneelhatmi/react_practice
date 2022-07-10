@@ -4,7 +4,7 @@ import {useState, useEffect} from 'react';
 import FeedbackData from "./data/feedbackdata";
 import Feedbackstats from "./Components/Feedbackstats";
 import FeedbackForm from "./Components/FeedbackForm";
-import {v4 as uuidv4} from 'uuid';
+
 
 
 function App() {
@@ -20,10 +20,13 @@ function App() {
     setFeedback(data);
   }
   const addFeedback = (newFeedback) => {
-    newFeedback.id=uuidv4();
-    newFeedback.editable=false;
-    setFeedback([newFeedback,...feedback]);
-
+      fetch('/feedback', {
+        method: 'POST',
+        headers: { "Content-Type": "application/json"},
+        body: JSON.stringify(newFeedback)
+      }).then(()=> {
+        fetchFeedback();
+      })
   }
   const deleteFeedback = (id) => {
     setFeedback(feedback.filter((item)=> item.id !== id));
@@ -39,11 +42,11 @@ function App() {
     }))
   }
   const editFeedback = (id) =>{
-    
     setFeedback(feedback.map((item)=>{
      if(item.id===id){
      let curitem = {...item};
              curitem.editable = !item.editable;
+             console.log(curitem);
              return curitem;
            }else return item;
     }))

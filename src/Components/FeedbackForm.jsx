@@ -5,16 +5,15 @@ import Button from './shared/Button';
 function FeedbackForm({handleAdd}) {
     const [text, setText] = useState('');
     const [rating, setRating] = useState(0);
-    const[msg, setMsg] = useState('');
-  //  const[editable, setEditable] = useState(false);
+    const [msg, setMsg] = useState('');
     
-
     const handleSubmit = (e) => {
         e.preventDefault();
         if(text.trim().length>10){
             const newFeedback = {
                 text, 
                 rating,
+                editable:false,
             }
             handleAdd(newFeedback);
             setText('');

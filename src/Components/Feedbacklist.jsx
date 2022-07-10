@@ -4,7 +4,7 @@ import {motion, AnimatePresence} from 'framer-motion';
 import Feedbackitem2 from './Feedbackitem2';
 
 function Feedbacklist({feedback, handleDelete, handleEditTask, Resubmitfeedback, resubmitRating}) {
-    if(!feedback || feedback.length ===0 ){
+    if(!feedback || feedback.length ===0 || feedback.length > 20){
         return <div className='noDisplay'>
             <h1 >No feedbacks to display</h1>
         </div>
@@ -40,7 +40,7 @@ function Feedbacklist({feedback, handleDelete, handleEditTask, Resubmitfeedback,
 Feedbacklist.propTypes = {
     feedback: propTypes.arrayOf(
         propTypes.shape({
-          //  id: propTypes.number.isRequired,
+            id: propTypes.number.isRequired,
             text: propTypes.string.isRequired,
             rating: propTypes.number.isRequired,
         })
