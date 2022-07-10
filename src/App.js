@@ -28,7 +28,7 @@ function App() {
       })
   }
   const deleteFeedback = async (id) => {
-    await fetch(`/feedback/${id}`, { method: 'DELETE '})
+    await fetch(`/feedback/${id}`, { method: 'DELETE'})
     setFeedback(feedback.filter((item)=> item.id !== id));
   }
   
