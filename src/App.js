@@ -1,14 +1,13 @@
 import Header from "./Components/Header";
 import Feedbacklist from "./Components/Feedbacklist";
 import {useState, useEffect} from 'react';
-import FeedbackData from "./data/feedbackdata";
 import Feedbackstats from "./Components/Feedbackstats";
 import FeedbackForm from "./Components/FeedbackForm";
 
 
 
 function App() {
-  const [feedback, setFeedback] = useState(FeedbackData);
+  const [feedback, setFeedback] = useState([]);
   useEffect(()=>{
     fetchFeedback();
   }, [])
