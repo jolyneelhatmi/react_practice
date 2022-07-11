@@ -42,16 +42,31 @@ function App() {
     }))
   }
   const editFeedback = (id) =>{
-    setFeedback(feedback.map((item)=>{
+    let item = feedback.find((item)=> item.id === id)
+    console.log(item);
+    item.editable=!item.editable;
+    fetch(`/feedback/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(item)
+    }).then(()=> {
+      fetchFeedback();
+    })
+   /* setFeedback(feedback.map((item)=>{
      if(item.id===id){
-     let curitem = {...item};
-             curitem.editable = !item.editable;
-             console.log(curitem);
-             return curitem;
+   //  let curitem = {...item};
+             item.editable = !item.editable;
+      //       console.log(item);
+             return item;
            }else return item;
-    }))
+    }))*/
    }
   const Resubmitfeedback = (id) =>{
+    /*let item = feedback.find((item)=> item.id === id)
+    item.text=document.getElementById(`${item.id}`).value;
+    console.log(item);*/
     setFeedback(feedback.map((item)=>{
       if(item.id===id){
         let value = document.getElementById(`${item.id}`);
